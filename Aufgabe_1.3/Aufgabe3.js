@@ -1,0 +1,1 @@
+alert('Ey Vuk, du bist der Beste!');

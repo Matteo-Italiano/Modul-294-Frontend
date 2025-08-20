@@ -1,0 +1,29 @@
+#destinations{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#destinations li{
+    border: 2px solid yellowgreen;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 1rem;
+}
+
+.country{
+    font-weight: bold;
+}
+
+#destinations li{
+    display: flex;
+    flex-direction: column;
+}
+
+.selected {
+    background-color: yellow;
+    border: 3px solid green;
+}
+

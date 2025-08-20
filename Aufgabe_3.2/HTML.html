@@ -27,8 +27,8 @@
             let numberOfImages = document.querySelectorAll('ul img').length
             if(numberOfImages > 3){
                 let childrenList = ul.children
-                for(i=0; i >= 3; i++){
-                    ul.children[i].remove()
+                for(i=0; i < 3; i++){
+                    ul.lastElementChild.remove();
                 }
             }
         }

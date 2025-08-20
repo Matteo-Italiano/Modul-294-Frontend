@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .large {
+            font-size: 2em;
+        }
+    </style>
+
+    <script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+    document.body.style.backgroundColor = 'lightblue';
+    document.querySelector('h1').innerText = 'Matteo';
+    document.querySelector('p').classList.add('large');
+
+    const newLi = document.createElement('li');
+    newLi.innerText = 'Text des neuen Listeneintrags';
+    document.querySelector('ul').appendChild(newLi);
+
+    document.querySelectorAll('li')[1].remove();
+
+    const img = document.createElement('img');
+    document.querySelector('h1').append(img);
+});
+
+    </script>
+</head>
+
+<body>
+    <h1>Plazhalter</h1>
+    <p>Lorem Ipsum</p>
+    <ul>
+        <li>Vuk</li>
+        <li>Lorik</li>
+    </ul>
+</body>
+
+</html>

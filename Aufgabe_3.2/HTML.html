@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <script defer>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+        })
+        
+
+        const addThree = () => {
+            const ul = document.querySelector('ul')
+            let numberOfImages = document.querySelectorAll('ul img').length
+            for(let i=0; i < 3; i++){
+                let newElement = document.createElement('img')
+                newElement.src = `https://picsum.photos/400/300?random=${numberOfImages + i}`
+                ul.appendChild(newElement)
+            }
+        }
+
+        const removeThree = () => {
+            const ul = document.querySelector('ul')
+            let numberOfImages = document.querySelectorAll('ul img').length
+            if(numberOfImages > 3){
+                let childrenList = ul.children
+                for(i=0; i >= 3; i++){
+                    ul.children[i].remove()
+                }
+            }
+        }
+    </script>
+
+    <title>Spoofify</title>
+</head>
+
+<body>
+    <header>
+        <h1>Spoofify</h1>
+        <span> Top of your birthweek </span>
+        <br />
+        <span> Latest releases randomized </span>
+    </header>
+
+    <main>
+        <section>
+            <h2>your spoofed overwiev</h2>
+            <span>Welcome to Spoofify, the rip-off music streaming service of ICT
+                Module 291!</span>
+
+            <h2 id="top-of-your-birthweek">Top of your birthweek</h2>
+
+            <ol>
+                <li>Jump by Kris Kross</li>
+                <li>My Lovin' (You're Never Gonna Get It) by En Vogue</li>
+                <li>Bohemian Rhapsody by Queen</li>
+                <li>Save The Best For Last by Vanessa Williams</li>
+                <li>Live And Learn by Joe Public</li>
+            </ol>
+
+            <h2>Latest releases randomized</h2>
+
+            <input type="button" name="" id="" value="Add three more" onclick="addThree()">
+            <input type="button" name="" id="" value="remove first three" onclick="removeThree()">
+
+            <ul>
+                <img src="https://picsum.photos/400/300?random=1" alt />
+                <img src="https://picsum.photos/400/300?random=2" alt />
+                <img src="https://picsum.photos/400/300?random=3" alt />
+                <img src="https://picsum.photos/400/300?random=4" alt />
+                <img src="https://picsum.photos/400/300?random=5" alt />
+                <img src="https://picsum.photos/400/300?random=6" alt />
+            </ul>
+        </section>
+    </main>
+</body>
+<footer>
+    <p>© 2023 Spooky Example, Inc.</p>
+</footer>
+
+</html>

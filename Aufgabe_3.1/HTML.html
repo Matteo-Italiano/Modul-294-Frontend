@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        div {
+            margin: 200px;
+            height: 200px;
+            width: 400px;
+            background-color: green;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById("first-counter").innerText = "0";
+            document.getElementById("second-counter").innerText = "0";
+            let div = document.querySelector('div');
+
+            div.addEventListener("click", (e) => {
+            const rect = div.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top
+
+            let img = document.querySelector('img')
+
+            img.style.position = "absolute";
+            img.style.left = (x + 200) + "px";
+            img.style.top = (y + 400) + "px";
+
+            });
+        });
+
+
+        function AddCount(number) {
+            let counter;
+
+            if (number === 1) {
+                counter = document.getElementById("first-counter")
+            } else {
+                counter = document.getElementById("second-counter")
+            }
+
+            counter.innerText = parseInt(counter.innerText) + 1;
+        }
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1 id="first-counter"></h1>
+    <input type="button" onClick="AddCount(1)" value="Button 1">
+
+    <br>
+
+    <h1 id="second-counter"></h1>
+    <Input type="button" onClick="AddCount(2)" value="Button 2" />
+
+    <div onclick="changeBallPosition(event)">
+        <img src="red-ball.jpg" alt="red-ball">
+    </div>
+
+</body>
+
+</html>

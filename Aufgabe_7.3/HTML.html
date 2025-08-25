@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.3</title>
+    <script defer>
+        let capInput;
+        document.addEventListener('DOMContentLoaded', () => {
+            capInput = document.getElementById('Postleitzahl')
+
+            let zips;
+
+            async function LoadPage() {
+                fetch('./places.json').then((res) => res.json()).then((data) => zips = data);
+            }
+
+            LoadPage();
+
+            capInput.addEventListener('blur', () => {
+                let cap = capInput.value
+                let cityName;
+
+                zips.forEach(zip => {
+                    if (zip.zipcode === cap) {
+                        cityName = zip.place;
+                    }
+                });
+
+                document.getElementById('Ort').value = cityName;
+            })
+        })
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <form>
+        <input type="text" name="Vorname" id="Vorname">
+        <input type="text" name="Nachname" id="Nachname">
+        <input type="text" name="Strasse" id="Strasse">
+        <input type="number" name="Postleitzahl" id="Postleitzahl">
+        <input type="text" name="Ort" id="Ort">
+
+        <input type="submit" name="submit" id="submit">
+    </form>
+</body>
+
+</html>

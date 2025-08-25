@@ -1,0 +1,59 @@
+¨
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.2</title>
+    <script defer>
+        function validatePassword(e) {
+                e.preventDefault();
+                let isValid;
+
+                let password = document.forms.formName.password
+                let confirmPassword = document.forms.formName.confirmPassword
+
+                if (password.length > 4) {
+                    if (password.value == confirmPassword.value) {
+                        isValid = true
+                        password.classList.toggle('is-valid')
+                        confirmPassword.classList.toggle('is-valid')
+                    } else {
+                        isValid = false
+                        password.classList.toggle('invalid')
+                        confirmPassword.classList.toggle('invalid')
+                    }
+                } else {
+                    isValid = false
+                        password.classList.toggle('invalid')
+                        confirmPassword.classList.toggle('invalid')
+                }
+
+                if (isValid) {
+                    const span = document.querySelector('p')
+
+                    span.innerText = 'Operation Succesfull'
+                }
+            }
+    </script>
+</head>
+
+<body>
+    <form name="formName" onsubmit="validatePassword(event)">
+        <h2>Email</h2>
+        <input type="email" name="email" id="email" required>
+        <h2>Password</h2>
+        <input type="password" name="password" id="password" required>
+        <h2>Confirm Password</h2>
+        <input type="password" name="confirmPassword" id="confirmPassword" required>
+        <h2>Accept Terms & Conditions</h2>
+        <input type="checkbox" name="terms and conditions" id="terms-and-conditions" required>
+
+        <input type="submit" name="submit" id="submit" value="register">
+    </form>
+
+    <p></p>
+</body>
+
+</html>

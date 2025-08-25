@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.5</title>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', () => {
+            let submitBtn = document.getElementById('submit');
+            let token;
+
+            async function getToken() {
+                const res = await fetch('http://10.69.4.6/challenges/1', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                })
+
+                token = res.headers.get('Authorization');
+                if (!token) throw new Error('Kein Authorization-Header in der Antwort');
+
+                console.log('Token:', token);
+                return token;
+            }
+
+            submitBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+
+                try {
+                    token = await getToken();
+                    await postComment();
+                } catch (err) {
+                    console.error(err);
+                }
+            });
+
+            async function postComment() {
+                let comment = {
+                    message: document.getElementById('message').value,
+                    username: document.getElementById('username').value
+                }
+
+                await fetch('http://10.69.4.6/comments',
+                    {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: token,
+                        },
+
+                        body: JSON.stringify(comment)
+                    }
+                )
+                    .then((response) => {
+                        response.json
+                    })
+                    .then((data) => {
+                        console.log(data)
+                    }).catch((error) => {
+                        console.log(error)
+                    })
+            }
+        })
+
+    </script>
+</head>
+
+<body>
+    <form>
+        <input type="text" name="username" id="username">
+        <input type="text" name="message" id="message">
+
+        <input type="submit" name="submit" id="submit">
+    </form>
+</body>
+
+</html>

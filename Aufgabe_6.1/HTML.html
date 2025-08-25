@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hallo Welt</title>
+    <script defer>
+        function displayName(e){
+            e.preventDefault();
+            const span = document.getElementsByTagName('p')[0]
+            let name = document.forms.nameForm.name.value
+
+            span.innerText = `Your name is ${name}`
+        }
+    </script>
+</head>
+<body>
+    <form name="nameForm" onsubmit="displayName(event)">
+        <h1>Name</h1>
+        <input type="text" name="name" id="name">
+
+        <input type="submit"/>
+    </form>
+
+    <p></p>
+</body>
+</html>
